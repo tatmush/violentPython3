@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import argparse
 from socket import *
 from threading import *

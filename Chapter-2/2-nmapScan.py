@@ -2,7 +2,7 @@ import nmap
 import argparse
 
 def nmapScan(tgtHost, tgtPort):
-    nmScan=nmap.PortScanner()
+    nm = nmap.PortScanner(nmap_search_path=('nmap', '/usr/bin/nmap', '/usr/local/bin/nmap', '/sw/bin/nmap', '/opt/local/bin/nmap', '/home/vliq/anaconda3/lib/python3.6/site-packages/nmap'))
     nmScan=scan(tgtHost, tgtPort)
     state=nmScan[tgtHost]['tcp'][int(tgtPort)]['state']
     print('[*] {} tcp/ {} {}'.format(tgtHost, tgtPort, state))
