@@ -2,8 +2,8 @@ import nmap
 import argparse
 
 def nmapScan(tgtHost, tgtPort):
-    nm = nmap.PortScanner(nmap_search_path=('nmap', '/usr/bin/nmap', '/usr/local/bin/nmap', '/sw/bin/nmap', '/opt/local/bin/nmap', '/home/vliq/anaconda3/lib/python3.6/site-packages/nmap'))
-    nmScan=scan(tgtHost, tgtPort)
+    nmScan = nmap.PortScanner(nmap_search_path=('nmap', '/usr/bin/nmap', '/usr/local/bin/nmap', '/sw/bin/nmap', '/opt/local/bin/nmap', '/home/vliq/anaconda3/lib/python3.6/site-packages/nmap'))
+    nmScan.scan(tgtHost, tgtPort)
     state=nmScan[tgtHost]['tcp'][int(tgtPort)]['state']
     print('[*] {} tcp/ {} {}'.format(tgtHost, tgtPort, state))
 
@@ -13,7 +13,7 @@ def main():
     parser.add_argument('-p', dest='tgtPort', type=str, help='specify target port[s] separated by comma')
     args=parser.parse_args()
     tgtHost=args.tgtHost
-    tgtPorts=str(args.tgtPort).split(', ')
+    tgtPorts=str(args.tgtPort).split(',')
 
     if (tgtHost==None) or (tgtHost[0]==None):
         print(parser.usage)

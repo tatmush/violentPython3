@@ -46,7 +46,7 @@ def main():
     parser.add_argument('-p', dest='tgtPort', type=str, help='specify the target port[s] separated by a comma')
     args=parser.parse_args()
     tgtHost=args.tgtHost
-    tgtPorts=str(args.tgtPort).split(', ')
+    tgtPorts=str(args.tgtPort).split(',')
     if (tgtHost==None) and (tgtPorts[0]==None):
         print(parser.usage)
         exit(0)
